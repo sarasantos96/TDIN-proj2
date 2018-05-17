@@ -90,7 +90,7 @@ export default {
         alert('Invalid inputs. Try again!')
       }
       else {
-        this.axios.post('api/user', {
+        this.axios.post('api/user/create', {
           name: this.registerForm.name,
           email: this.registerForm.email,
           password: this.registerForm.password
