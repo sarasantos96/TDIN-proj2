@@ -15,6 +15,13 @@
               </div>
             </template>
             <div>{{ ticket.description }}</div>
+            <div class="state">
+              <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
+              <div v-else-if="ticket.status === 'assigned to'">State: <el-tag>Assigned to</el-tag></div>
+              <div v-else-if="ticket.status === 'waiting for answers'">State: <el-tag type="warning">waiting for answers</el-tag></div>
+              <div v-else>State: <el-tag type="success">Solved</el-tag></div>
+
+            </div>
           </el-collapse-item>
         </el-collapse>
       </el-col>
@@ -58,9 +65,16 @@ export default {
 <style>
   .mainDiv {
     margin-top: 5%;
+    margin-bottom: 5%;
   }
 
   .title {
+    font-weight: bold;
+  }
+
+  .state {
+    margin-top: 4%;
+    text-align: right;
     font-weight: bold;
   }
 </style>
