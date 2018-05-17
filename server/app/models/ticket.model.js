@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 const TicketSchema = mongoose.Schema({
-    name: String,
-    email: String,
-    title: String,
-    description: String,
-    status: String,
-    date: { type: Date, default: Date.now }
+    userId:         {type: String, require:true },
+    name:           {type: String, require:true },
+    email:          {type: String, require:true },
+    title:          {type: String, require:true },
+    description:    {type: String, require:true },
+    status:         {type: String, require:true },
+    date:           {type: Date, default: Date.now }
 }, {
     timestamps: true
 });

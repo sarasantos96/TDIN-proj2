@@ -11,6 +11,7 @@ exports.create = (req, res) => {
 
     // Create a Ticket
     const ticket = new Ticket({
+        userId: req.body.userId,
         name: req.body.name,
         email: req.body.email,
         title: req.body.title,
@@ -74,6 +75,7 @@ exports.update = (req, res) => {
 
     // Find Ticket and update it with the request body
     Ticket.findByIdAndUpdate(req.params.ticketId, {
+        userId: req.body.userId,
         name: req.body.name,
         email: req.body.email,
         title: req.body.title,
