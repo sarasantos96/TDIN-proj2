@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const tickets = require('../controllers/ticket.controller.js');
-
+  
     // Create a new Note
     app.post('/ticket', tickets.create);
 
@@ -15,4 +15,10 @@ module.exports = (app) => {
 
     // Delete a Note with noteId
     app.delete('/ticket/:ticketId', tickets.delete);
+
+    //Get user tickets
+    app.get('/ticket/user/:userId',tickets.getUserTickets);
+
+    //Get solver tickets
+    app.get('/ticket/solver/:solverId', tickets.getSolverTickets);
 }
