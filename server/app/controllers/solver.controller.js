@@ -1,4 +1,4 @@
-const User = require('../models/user.model');
+const Solver = require('../models/solver.model');
 const httpStatus = require('http-status');
 
 
@@ -8,7 +8,7 @@ const httpStatus = require('http-status');
  */
 exports.create = async (req, res, next) => {
     try {
-        const user = new User(req.body);
+        const user = new Solver(req.body);
         const savedUser = await user.save();
         res.status(httpStatus.CREATED);
         res.json(savedUser.transform());
@@ -23,7 +23,7 @@ exports.create = async (req, res, next) => {
  */
 exports.list = async (req, res, next) => {
     try {
-      const users = await User.list(req.query);
+      const users = await Solver.list(req.query);
       const transformedUsers = users.map(user => user.transform());
       res.json(transformedUsers);
     } catch (error) {
@@ -33,7 +33,7 @@ exports.list = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     try {
-      const { user } = await User.findUser(req.body);
+      const { user } = await Solver.findSolver(req.body);
       const userTransformed = user.transform();
       return res.json({user: userTransformed });
     } catch (error) {
@@ -44,7 +44,7 @@ exports.login = async (req, res, next) => {
 exports.get = async (req, res, next) => {
   try{
     console.log(req.params.userId);
-    const user = await User.get(req.params.userId);
+    const user = await Solver.get(req.params.solverId);
     const userTransformed = user.transform();
     return res.json({user: userTransformed });
   }catch(error){

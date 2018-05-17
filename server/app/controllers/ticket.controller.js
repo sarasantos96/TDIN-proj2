@@ -12,6 +12,7 @@ exports.create = (req, res) => {
     // Create a Ticket
     const ticket = new Ticket({
         userId: req.body.userId,
+        solverId: req.body.solverId,
         name: req.body.name,
         email: req.body.email,
         title: req.body.title,
@@ -76,6 +77,7 @@ exports.update = (req, res) => {
     // Find Ticket and update it with the request body
     Ticket.findByIdAndUpdate(req.params.ticketId, {
         userId: req.body.userId,
+        solverId: req.body.solverId || null,
         name: req.body.name,
         email: req.body.email,
         title: req.body.title,
@@ -119,6 +121,30 @@ exports.delete = (req, res) => {
         }
         return res.status(500).send({
             message: "Could not delete ticket with id " + req.params.ticketId
+        });
+    });
+};
+
+//Retrieve all tickets of a user
+exports.getUserTickets = (req, res) => {
+    Ticket.find({userId: req.params.userId})
+    .then(tickets => {
+        res.send(tickets);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving tickets."
+        });
+    });
+};
+
+//Retrieve all tickets of a solver
+exports.getSolverTickets = (req, res) => {
+    Ticket.find({solverId: req.params.solverId})
+    .then(tickets => {
+        res.send(tickets);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving tickets."
         });
     });
 };

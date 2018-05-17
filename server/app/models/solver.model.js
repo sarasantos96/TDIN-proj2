@@ -3,7 +3,7 @@ const APIError = require('../utils/APIError');
 const httpStatus = require('http-status');
 const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema({
+const solverSchema = new mongoose.Schema({
     name : {
         type: String,
         max: 128,
@@ -23,10 +23,15 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 6,
         maxlength: 128
-    }
+    },
+    isIT:{
+        type: Boolean,
+        default: true
+    }    
+
 });
 
-userSchema.pre('save', async function save(next) {
+solverSchema.pre('save', async function save(next) {
     try {
       if (!this.isModified('password')) return next();
   
@@ -41,10 +46,10 @@ userSchema.pre('save', async function save(next) {
     }
 });
 
-userSchema.method({
+solverSchema.method({
     transform() {
         const transformed = {};
-        const fields = ['id', 'name', 'email', 'createdAt'];
+        const fields = ['id', 'name', 'email', 'isIT', 'createdAt'];
     
         fields.forEach((field) => {
           transformed[field] = this[field];
@@ -58,7 +63,7 @@ userSchema.method({
     }
 });
 
-userSchema.statics = {
+solverSchema.statics = {
     /**
    * Get user
    *
@@ -106,7 +111,7 @@ userSchema.statics = {
     return error;
   },
 
-  async findUser(options) {
+  async findSolver(options) {
     const { email, password, refreshObject } = options;
     if (!email) throw new APIError({ message: 'An email is required' });
 
@@ -129,4 +134,4 @@ userSchema.statics = {
   },
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Solver', solverSchema);
