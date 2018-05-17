@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     res.json({"message": "Server initialized"});
 });
 
-require('./app/routes/note.routes.js')(app);
+require('./app/routes/index.js')(app);
 
 // listen for requests
 app.listen(3000, () => {
