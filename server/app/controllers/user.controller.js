@@ -13,7 +13,7 @@ exports.create = async (req, res, next) => {
         res.status(httpStatus.CREATED);
         res.json(savedUser.transform());
     } catch (error) {
-        next(User.checkDuplicateEmail(error));
+        return res.json({error: error});
     }
   };
 
@@ -37,7 +37,7 @@ exports.login = async (req, res, next) => {
       const userTransformed = user.transform();
       return res.json({user: userTransformed });
     } catch (error) {
-      return next(error);
+      return res.json({error : error});
     }
 };
 
