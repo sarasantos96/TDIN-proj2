@@ -11,3 +11,4 @@ C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.Tro
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\bin\Debug\Newtonsoft.Json.dll
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.csproj.CopyComplete
+C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.ITHomepage.resources

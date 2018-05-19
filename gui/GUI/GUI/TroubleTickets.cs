@@ -50,9 +50,12 @@ namespace GUI
 
             if(error == null)
             {
-                if(responseJson.user.isIT.Value)
-                    Console.WriteLine("Logged in");
-                //TODO: Change To HomePage and pass User               
+                if (responseJson.user.isIT.Value){
+                    User user = new User(responseJson.user.id.Value, responseJson.user.email.Value,true);
+                    this.Close();
+                    new ITHomepage(user).Show();
+                }
+
             }
             else
             {
