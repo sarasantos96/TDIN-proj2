@@ -149,3 +149,14 @@ exports.getSolverTickets = (req, res) => {
     });
 };
 
+exports.getUnassignedTickets = (req, res) => {
+    Ticket.find({status: "unassigned"})
+    .then(tickets => {
+        res.send(tickets);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving tickets."
+        });
+    });
+}
+
