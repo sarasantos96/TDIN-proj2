@@ -1,51 +1,56 @@
 <template>
-  <div class="mainDiv">
-    <el-row>
-      <el-col :span="6" :offset="8">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="Login" name="first">
-            <el-form ref="login" :model="loginForm">
-              <el-form-item label="Email">
-                <el-input placeholder="example@example.com" v-model="loginForm.email"></el-input>
-              </el-form-item>
-              <el-form-item label="Password">
-                <el-input type="password" placeholder="*************" v-model="loginForm.password"></el-input>
-              </el-form-item>
-              <el-form-item class="formBtn">
-                <el-button type="primary" @click="login('login')">Login</el-button>
-              </el-form-item>
-            </el-form>
-          </el-tab-pane>
-          <el-tab-pane label="Register" name="second">
-            <el-form ref="register" :model="registerForm">
-              <el-form-item label="Name">
-                <el-input placeholder="example@example.com" v-model="registerForm.name"></el-input>
-              </el-form-item>
-              <el-form-item label="Email">
-                <el-input placeholder="example@example.com" v-model="registerForm.email"></el-input>
-              </el-form-item>
-              <el-form-item label="Password">
-                <el-input type="password" placeholder="*************" v-model="registerForm.password"></el-input>
-              </el-form-item>
-              <el-form-item class="formBtn">
-                <el-button type="primary" @click="register('register')">Register</el-button>
-              </el-form-item>
-            </el-form>
-          </el-tab-pane>
-        </el-tabs>
-      </el-col>
-    </el-row>
+  <div>
+    <custom-header></custom-header>
+    <div class="mainDiv">
+      <el-row>
+        <el-col :span="6" :offset="8">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="Login" name="first">
+              <el-form ref="login" :model="loginForm">
+                <el-form-item label="Email">
+                  <el-input placeholder="example@example.com" v-model="loginForm.email"></el-input>
+                </el-form-item>
+                <el-form-item label="Password">
+                  <el-input type="password" placeholder="*************" v-model="loginForm.password"></el-input>
+                </el-form-item>
+                <el-form-item class="formBtn">
+                  <el-button type="primary" @click="login('login')">Login</el-button>
+                </el-form-item>
+              </el-form>
+            </el-tab-pane>
+            <el-tab-pane label="Register" name="second">
+              <el-form ref="register" :model="registerForm">
+                <el-form-item label="Name">
+                  <el-input placeholder="example@example.com" v-model="registerForm.name"></el-input>
+                </el-form-item>
+                <el-form-item label="Email">
+                  <el-input placeholder="example@example.com" v-model="registerForm.email"></el-input>
+                </el-form-item>
+                <el-form-item label="Password">
+                  <el-input type="password" placeholder="*************" v-model="registerForm.password"></el-input>
+                </el-form-item>
+                <el-form-item class="formBtn">
+                  <el-button type="primary" @click="register('register')">Register</el-button>
+                </el-form-item>
+              </el-form>
+            </el-tab-pane>
+          </el-tabs>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
 import ElCol from 'element-ui/packages/col/src/col'
 import ElFormItem from '../../node_modules/element-ui/packages/form/src/form-item.vue'
+import customHeader from './customHeader'
 
 export default {
   components: {
     ElFormItem,
-    ElCol},
+    ElCol,
+    customHeader},
   name: 'Home',
   data () {
     return {

@@ -1,57 +1,59 @@
 <template>
-  <div class="mainDiv">
-    <el-row>
-      <el-col :span="10" :offset="1">
-        <h3>Current Tickets:</h3>
-      </el-col>
-      <el-col :span="8" :offset="2">
-        <h3>Create new Ticket:</h3>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="10" :offset="1">
-        <el-collapse v-for="ticket in tickets" :key="ticket.title">
-          <el-collapse-item :name="ticket.title">
-            <template class="title" slot="title">
-              <div class="title">
-                {{ ticket.title }}
+  <div>
+    <custom-header></custom-header>
+    <div class="mainDiv">
+      <el-row>
+        <el-col :span="10" :offset="1">
+          <h3>Current Tickets:</h3>
+        </el-col>
+        <el-col :span="8" :offset="2">
+          <h3>Create new Ticket:</h3>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="10" :offset="1">
+          <el-collapse v-for="ticket in tickets" :key="ticket.title">
+            <el-collapse-item :name="ticket.title">
+              <template class="title" slot="title">
+                <div class="title">
+                  {{ ticket.title }}
+                </div>
+              </template>
+              <div>{{ ticket.description }}</div>
+              <div class="state">
+                <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
+                <div v-else-if="ticket.status === 'assigned to'">State: <el-tag>Assigned to</el-tag></div>
+                <div v-else-if="ticket.status === 'waiting for answers'">Status: <el-tag type="warning">waiting for answers</el-tag></div>
+                <div v-else>State: <el-tag type="success">Solved</el-tag></div>
               </div>
-            </template>
-            <div>{{ ticket.description }}</div>
-            <div class="state">
-              <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
-              <div v-else-if="ticket.status === 'assigned to'">State: <el-tag>Assigned to</el-tag></div>
-              <div v-else-if="ticket.status === 'waiting for answers'">Status: <el-tag type="warning">waiting for answers</el-tag></div>
-              <div v-else>State: <el-tag type="success">Solved</el-tag></div>
-
-            </div>
-          </el-collapse-item>
-        </el-collapse>
-      </el-col>
-      <el-col :span="8" :offset="2">
-        <el-row>
-          <el-form ref="newTicket" :model="newTicket">
-            <el-form-item label="Title">
-              <el-input placeholder="Title" v-model="newTicket.title"></el-input>
-            </el-form-item>
-            <el-form-item label="Description">
-              <el-input rows="5" placeholder="Enter description here" type="textarea" v-model="newTicket.description"></el-input>
-            </el-form-item>
-            <el-form-item class="ticket-button">
-              <el-button type="primary" @click="createTicket">Submit Ticket</el-button>
-            </el-form-item>
-          </el-form>
-        </el-row>
-        <el-row>
-
-        </el-row>
-      </el-col>
-    </el-row>
+            </el-collapse-item>
+          </el-collapse>
+        </el-col>
+        <el-col :span="8" :offset="2">
+          <el-row>
+            <el-form ref="newTicket" :model="newTicket">
+              <el-form-item label="Title">
+                <el-input placeholder="Title" v-model="newTicket.title"></el-input>
+              </el-form-item>
+              <el-form-item label="Description">
+                <el-input rows="5" placeholder="Enter description here" type="textarea" v-model="newTicket.description"></el-input>
+              </el-form-item>
+              <el-form-item class="ticket-button">
+                <el-button type="primary" @click="createTicket">Submit Ticket</el-button>
+              </el-form-item>
+            </el-form>
+          </el-row>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
+import customHeader from './customHeader'
+
 export default {
+  components: {customHeader},
   name: 'TicketArea',
   data () {
     return {

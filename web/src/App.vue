@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <h1>TroubleTicket</h1>
     <router-view/>
   </div>
 </template>
 
 <script>
+import ElCol from 'element-ui/packages/col/src/col'
+
 export default {
+  components: {ElCol},
   name: 'App'
 }
 </script>
