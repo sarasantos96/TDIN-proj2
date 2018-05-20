@@ -8,20 +8,20 @@ namespace GUI
 {
     public class User
     {
-        private string solverId;
+        private string id;
         private string email;
         private Boolean isIT;
 
         public User(string id, string email, Boolean IT)
         {
-            this.solverId = id;
+            this.id = id;
             this.email = email;
             this.isIT = IT;
         }
 
         public string getID()
         {
-            return solverId;
+            return id;
         }
 
         public string getEmail()
@@ -32,6 +32,23 @@ namespace GUI
         public Boolean isSolverIT()
         {
             return isIT;
+        }
+    }
+
+    public class Ticket
+    {
+        public string id, userId, solverId, name, email, title, description, status;
+
+        public Ticket(string id, string userId, string solverId, string name, string email, string title, string description, string status)
+        {
+            this.id = id;
+            this.userId = userId;
+            this.solverId = solverId;
+            this.name = name;
+            this.email = email;
+            this.title = title;
+            this.description = description;
+            this.status = status;
         }
     }
 }

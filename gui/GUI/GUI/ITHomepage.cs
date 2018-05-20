@@ -21,5 +21,13 @@ namespace GUI
             this.tabPage1.Text = "Assigned Tickets";
             this.tabPage2.Text = "Responses";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PickTicket pt = new PickTicket(user);
+            pt.StartPosition = FormStartPosition.CenterParent;
+            pt.Show();
+            this.Close();
+        }
     }
 }

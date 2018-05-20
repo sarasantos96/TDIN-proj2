@@ -54,6 +54,12 @@
     <Compile Include="ITHomepage.Designer.cs">
       <DependentUpon>ITHomepage.cs</DependentUpon>
     </Compile>
+    <Compile Include="PickTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PickTicket.Designer.cs">
+      <DependentUpon>PickTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="TroubleTickets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="ITHomepage.resx">
       <DependentUpon>ITHomepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickTicket.resx">
+      <DependentUpon>PickTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TroubleTickets.resx">
       <DependentUpon>TroubleTickets.cs</DependentUpon>
