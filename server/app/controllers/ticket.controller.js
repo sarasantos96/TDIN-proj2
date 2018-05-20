@@ -1,4 +1,5 @@
 const Ticket = require('../models/ticket.model.js');
+var nodemailer = require('nodemailer');
 
 // Create and Save a new Note
 exports.create = (req, res) => {
@@ -157,6 +158,33 @@ exports.getUnassignedTickets = (req, res) => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving tickets."
         });
+    });
+}
+
+exports.sendEmail = (req, res) => {
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'trouble.tickets.tdin@gmail.com',
+            pass: 'troubleticketstdin'
+        }
+    });
+    let mailOptions = {
+        from: '"Trouble Tickets" <trouble.tickets.tdin@gmail.com>',
+        to: req.body.to,
+        subject: req.body.subject,
+        text: req.body.body,
+    }
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+            res.json({yo: 'error'});
+        }else{
+            console.log('Message sent: ' + info.response);
+            res.json({yo: info.response});
+        };
     });
 }
 

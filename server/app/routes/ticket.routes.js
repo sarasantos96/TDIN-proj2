@@ -23,4 +23,6 @@ module.exports = (app) => {
     app.get('/ticket/solver/:solverId', tickets.getSolverTickets);
 
     app.get('/tickets/unassigned', tickets.getUnassignedTickets);
+
+    app.post('/ticket/sendemail', tickets.sendEmail);
 }
