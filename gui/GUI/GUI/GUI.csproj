@@ -60,6 +60,24 @@
     <Compile Include="PickTicket.Designer.cs">
       <DependentUpon>PickTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionPage.Designer.cs">
+      <DependentUpon>QuestionPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SendQuestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SendQuestion.Designer.cs">
+      <DependentUpon>SendQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TicketPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TicketPage.Designer.cs">
+      <DependentUpon>TicketPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="TroubleTickets.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +92,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PickTicket.resx">
       <DependentUpon>PickTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionPage.resx">
+      <DependentUpon>QuestionPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SendQuestion.resx">
+      <DependentUpon>SendQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TicketPage.resx">
+      <DependentUpon>TicketPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TroubleTickets.resx">
       <DependentUpon>TroubleTickets.cs</DependentUpon>

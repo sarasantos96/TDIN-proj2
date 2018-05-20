@@ -11,6 +11,7 @@ exports.create = (req, res) => {
     const question = new Question({
         solverId:         req.body.solverId,
         otherId:          req.body.otherId,
+        title:            req.body.title,
         question:         req.body.question,
         response:         req.body.response,
         ticketId:         req.body.ticketId
@@ -70,6 +71,7 @@ exports.update = (req, res) => {
     Question.findByIdAndUpdate(req.params.questionId, {
         solverId:         req.body.solverId,
         otherId:          req.body.otherId,
+        title:            req.body.title,
         question:         req.body.question,
         response:         req.body.response,
         ticketId:         req.body.ticketId

@@ -31,13 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ITHomepage));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.solverTicketsLV = new System.Windows.Forms.ListView();
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.questionsLV = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -53,7 +57,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.listView1);
+            this.tabPage1.Controls.Add(this.solverTicketsLV);
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -62,33 +66,36 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // solverTicketsLV
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.solverTicketsLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Title,
             this.Date});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(911, 521);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.solverTicketsLV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.solverTicketsLV.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.solverTicketsLV.FullRowSelect = true;
+            this.solverTicketsLV.GridLines = true;
+            this.solverTicketsLV.Location = new System.Drawing.Point(3, 3);
+            this.solverTicketsLV.MultiSelect = false;
+            this.solverTicketsLV.Name = "solverTicketsLV";
+            this.solverTicketsLV.Size = new System.Drawing.Size(911, 521);
+            this.solverTicketsLV.TabIndex = 0;
+            this.solverTicketsLV.UseCompatibleStateImageBehavior = false;
+            this.solverTicketsLV.View = System.Windows.Forms.View.Details;
             // 
             // Title
             // 
             this.Title.Text = "Title";
-            this.Title.Width = 678;
+            this.Title.Width = 515;
             // 
             // Date
             // 
-            this.Date.Text = "Date";
+            this.Date.Text = "User";
             this.Date.Width = 161;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.questionsLV);
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -100,7 +107,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(670, 23);
             this.button1.Name = "button1";
@@ -109,6 +116,32 @@
             this.button1.Text = "Choose a new Ticket";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // questionsLV
+            // 
+            this.questionsLV.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.questionsLV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.questionsLV.FullRowSelect = true;
+            this.questionsLV.GridLines = true;
+            this.questionsLV.Location = new System.Drawing.Point(3, 3);
+            this.questionsLV.MultiSelect = false;
+            this.questionsLV.Name = "questionsLV";
+            this.questionsLV.Size = new System.Drawing.Size(911, 521);
+            this.questionsLV.TabIndex = 0;
+            this.questionsLV.UseCompatibleStateImageBehavior = false;
+            this.questionsLV.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Title";
+            this.columnHeader1.Width = 524;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Status";
+            this.columnHeader2.Width = 135;
             // 
             // ITHomepage
             // 
@@ -123,6 +156,7 @@
             this.Text = "ITHomepage";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -133,8 +167,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView solverTicketsLV;
         private System.Windows.Forms.ColumnHeader Title;
         private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ListView questionsLV;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

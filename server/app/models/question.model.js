@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const QuestionSchema = mongoose.Schema({
     solverId:          {type: String, require:true },
     otherId:           {type: String, require: true, default: null },
+    title:              {type: String, require: true},
     question:          {type: String, require:true },
     response:          {type: String, default: null},
     ticketId:          {type: String, require:true },

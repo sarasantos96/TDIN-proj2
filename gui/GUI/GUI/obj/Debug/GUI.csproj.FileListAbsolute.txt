@@ -13,3 +13,6 @@ C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\bin\Debug\Newtons
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.ITHomepage.resources
 C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.PickTicket.resources
+C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.TicketPage.resources
+C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.SendQuestion.resources
+C:\Users\santo\OneDrive\Documentos\FEUP\TDIN-proj2\gui\GUI\GUI\obj\Debug\GUI.QuestionPage.resources

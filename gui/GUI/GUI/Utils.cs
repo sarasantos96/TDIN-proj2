@@ -51,4 +51,20 @@ namespace GUI
             this.status = status;
         }
     }
+
+    public class Question
+    {
+        public string id, solverId, otherId, title, question, response, ticketId;
+
+        public Question(string id, string solverId, string otherId, string title, string question, string ticketId, string response)
+        {
+            this.id = id;
+            this.solverId = solverId;
+            this.otherId = otherId;
+            this.title = title;
+            this.question = question;
+            this.ticketId = ticketId;
+            this.response = response;
+        }
+    }
 }
