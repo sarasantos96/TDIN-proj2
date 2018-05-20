@@ -174,7 +174,7 @@ exports.sendEmail = (req, res) => {
     let mailOptions = {
         from: '"Trouble Tickets" <trouble.tickets.tdin@gmail.com>',
         to: req.body.to,
-        subject: req.body.subject,
+        subject: 'Trouble Ticket Response -' + req.body.subject,
         text: req.body.body,
     }
     transporter.sendMail(mailOptions, function(error, info){

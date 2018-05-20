@@ -101,8 +101,9 @@
             this.sendEmail.Name = "sendEmail";
             this.sendEmail.Size = new System.Drawing.Size(150, 34);
             this.sendEmail.TabIndex = 9;
-            this.sendEmail.Text = "Email Response";
+            this.sendEmail.Text = "Send Email";
             this.sendEmail.UseVisualStyleBackColor = false;
+            this.sendEmail.Click += new System.EventHandler(this.sendEmail_Click);
             // 
             // helpButton
             // 
