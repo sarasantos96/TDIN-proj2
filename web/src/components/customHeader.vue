@@ -5,7 +5,7 @@
                 <h1>TroubleTicket</h1>
             </el-col>
             <el-col class="logoutBtn" :span="3" :offset="9">
-                <div v-if="user.id !== ''">
+                <div v-if="user.id !== '' && user.id !== null">
                     <el-button type="primary" @click="logout">Logout</el-button>
                 </div>
             </el-col>

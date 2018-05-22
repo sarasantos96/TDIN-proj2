@@ -12,22 +12,27 @@
       </el-row>
       <el-row>
         <el-col :span="10" :offset="1">
-          <el-collapse v-for="ticket in tickets" :key="ticket.title">
-            <el-collapse-item :name="ticket.title">
-              <template class="title" slot="title">
-                <div class="title">
-                  {{ ticket.title }}
+          <div v-if="tickets.length === 0">
+            You don't have any current ticket
+          </div>
+          <div v-else>
+            <el-collapse v-for="ticket in tickets" :key="ticket.title">
+              <el-collapse-item :name="ticket.title">
+                <template class="title" slot="title">
+                  <div class="title">
+                    {{ ticket.title }}
+                  </div>
+                </template>
+                <div>{{ ticket.description }}</div>
+                <div class="state">
+                  <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
+                  <div v-else-if="ticket.status === 'assigned'">State: <solver-name v-bind:name="ticket.solverId"></solver-name></div>
+                  <div v-else-if="ticket.status === 'waiting'">Status: <el-tag type="warning">Waiting for answers</el-tag></div>
+                  <div v-else>State: <el-tag type="success">Solved</el-tag></div>
                 </div>
-              </template>
-              <div>{{ ticket.description }}</div>
-              <div class="state">
-                <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
-                <div v-else-if="ticket.status === 'assigned'">State: <solver-name v-bind:name="ticket.solverId"></solver-name></div>
-                <div v-else-if="ticket.status === 'waiting'">Status: <el-tag type="warning">Waiting for answers</el-tag></div>
-                <div v-else>State: <el-tag type="success">Solved</el-tag></div>
-              </div>
-            </el-collapse-item>
-          </el-collapse>
+              </el-collapse-item>
+            </el-collapse>
+          </div>
         </el-col>
         <el-col :span="8" :offset="2">
           <el-row>
