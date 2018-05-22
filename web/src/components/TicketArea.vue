@@ -22,8 +22,8 @@
               <div>{{ ticket.description }}</div>
               <div class="state">
                 <div v-if="ticket.status === 'unassigned'">State: <el-tag type="info">Unassigned</el-tag></div>
-                <div v-else-if="ticket.status === 'assigned to'">State: <el-tag>Assigned to</el-tag></div>
-                <div v-else-if="ticket.status === 'waiting for answers'">Status: <el-tag type="warning">waiting for answers</el-tag></div>
+                <div v-else-if="ticket.status === 'assigned'">State: <solver-name v-bind:name="ticket.solverId"></solver-name></div>
+                <div v-else-if="ticket.status === 'waiting'">Status: <el-tag type="warning">Waiting for answers</el-tag></div>
                 <div v-else>State: <el-tag type="success">Solved</el-tag></div>
               </div>
             </el-collapse-item>
@@ -51,9 +51,12 @@
 
 <script>
 import customHeader from './customHeader'
+import SolverName from './SolverName.vue'
 
 export default {
-  components: {customHeader},
+  components: {
+    SolverName,
+    customHeader},
   name: 'TicketArea',
   data () {
     return {
@@ -115,9 +118,11 @@ export default {
 
     let request = 'api/ticket/user/' + this.user.id
 
+    let app = this
+
     this.axios.get(request)
       .then(response => {
-        this.tickets = response.data
+        app.tickets = response.data
       })
       .catch(error => {
         console.log('GET request failed with error ' + error)
