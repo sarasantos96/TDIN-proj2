@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using GUI;
 
-namespace GUI
+namespace OtherDepartments
 {
     public partial class TroubleTickets : Form
     {
         private static readonly HttpClient client = new HttpClient();
-
         public TroubleTickets()
         {
             InitializeComponent();
-            this.Text = "Trouble Tickets - IT Department";
+            this.Text = "Trouble Tickets - Other Department";
             this.tabPage1.Text = "Login";
             this.tabPage2.Text = "Register";
 
-            string emailTextBoxName = "emailTextBox";
-            string passwordTextBoxName = "passwordTextBox";
-            TextBox passwordTextBox = this.Controls.Find(passwordTextBoxName, true).FirstOrDefault() as TextBox;
-            TextBox emailTextBox = this.Controls.Find(emailTextBoxName, true).FirstOrDefault() as TextBox;
-
-            passwordTextBox.PasswordChar = '*';
-            registerPasswordBox.PasswordChar = '*';
+            passLBox.PasswordChar = '*';
+            passRBox.PasswordChar = '*';
         }
 
         public async Task Login(string email, string password)
@@ -43,26 +42,28 @@ namespace GUI
             dynamic responseJson = JObject.Parse(responseString);
             var error = responseJson.error;
 
-            if(error == null)
+            if (error == null)
             {
-                if (responseJson.user.isIT.Value){
-                    User user = new User(responseJson.user.id.Value, responseJson.user.email.Value,true);
+                if (!responseJson.user.isIT.Value)
+                {
+                    User user = new User(responseJson.user.id.Value, responseJson.user.email.Value, false);
                     this.Close();
-                    new ITHomepage(user).Show();
+                    Console.WriteLine(user.getEmail());
+                    new Homepage(user).Show();
                 }
                 else
                 {
-                    emailTextBox.Text = "";
-                    passwordTextBox.Text = "";
+                    emailLbox.Text = "";
+                    passLBox.Text = "";
                 }
 
             }
             else
             {
-                emailTextBox.Text = "";
-                passwordTextBox.Text = "";
+                emailLbox.Text = "";
+                passLBox.Text = "";
             }
-           
+
         }
 
         public async Task Register(string name, string email, string password)
@@ -72,7 +73,7 @@ namespace GUI
                    { "name", name },
                    { "email", email },
                    { "password", password },
-                   { "isIT", "true"}
+                   { "isIT", "false"}
                 };
 
             var content = new FormUrlEncodedContent(values);
@@ -89,40 +90,40 @@ namespace GUI
             else
             {
                 //TODO: show message of error
-                
+
             }
-            registerEmailBox.Text = "";
-            registerNameBox.Text = "";
-            registerPasswordBox.Text = "";
+            emailRBox.Text = "";
+            nameRBox.Text = "";
+            passRBox.Text = "";
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            string email = this.emailTextBox.Text , 
-                   password = this.passwordTextBox.Text;
-
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
-                return;
-
-            Login(email, password);          
-        }
-
-        private void registerButton_Click(object sender, EventArgs e)
-        {
-            string name = this.registerNameBox.Text,
-                   email = this.registerEmailBox.Text,
-                   password = this.registerPasswordBox.Text;
+            string name = nameRBox.Text,
+                   email = emailRBox.Text,
+                   password = passRBox.Text;
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name))
                 return;
 
-            if(password.Length < 6)
+            if (password.Length < 6)
             {
                 //TODO: show error
                 return;
             }
 
             Register(name, email, password);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string email = this.emailLbox.Text,
+                   password = this.passLBox.Text;
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+                return;
+
+            Login(email, password);
         }
     }
 }

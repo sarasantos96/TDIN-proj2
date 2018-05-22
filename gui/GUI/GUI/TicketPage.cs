@@ -66,7 +66,27 @@ namespace GUI
             this.Close();
             new ITHomepage(user).Show();
         }
-            private void sendEmail_Click(object sender, EventArgs e)
+
+        public async Task ChangeTicketStatusSolved(Ticket ticket)
+        {
+            ticket.status = "waiting";
+            var values = new Dictionary<string, string>
+                {
+                   { "userId", ticket.userId },
+                   { "solverId", user.getID()},
+                   { "name", ticket.name },
+                   { "email", ticket.email},
+                   { "title", ticket.title },
+                   { "description", ticket.description },
+                   { "status", "solved" }
+                };
+
+            var content = new FormUrlEncodedContent(values);
+            var response = await client.PutAsync("http://localhost:3000/ticket/" + ticket.id, content);
+            var responseString = await response.Content.ReadAsStringAsync();
+        }
+
+        private void sendEmail_Click(object sender, EventArgs e)
         {
             string body = responseBox.Text;
 
@@ -77,6 +97,9 @@ namespace GUI
             }
 
             Email(ticket.email, ticket.title, body);
+            ChangeTicketStatusSolved(ticket);
+            ticket.status = "solved";
         }
+
     }
 }

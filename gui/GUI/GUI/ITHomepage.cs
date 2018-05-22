@@ -55,11 +55,15 @@ namespace GUI
                 var description = ticket.description;
                 var status = ticket.status;
                 Ticket t = new Ticket(id.Value, userId.Value, solverId.Value, name.Value, email.Value, title.Value, description.Value, status.Value);
-                tickets.Add(t);
+                if (status != "solved")
+                {
+                    tickets.Add(t);
 
-                ListViewItem item = new ListViewItem(title.Value);
-                item.SubItems.Add(email.Value);
-                solverTicketsLV.Items.Add(item);
+                    ListViewItem item = new ListViewItem(title.Value);
+                    item.SubItems.Add(email.Value);
+                    solverTicketsLV.Items.Add(item);
+                }
+                
             }
         }
 
