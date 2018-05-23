@@ -92,8 +92,7 @@ export default {
     createTicket () {
       if (this.newTicket.title === '' || this.newTicket.description === '') {
         alert('You have to fill the title and description fields|')
-      }
-      else {
+      } else {
         let newTicket = {
           userId: this.user.id,
           name: this.user.name,

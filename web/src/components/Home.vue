@@ -73,8 +73,7 @@ export default {
     login () {
       if (this.loginForm.email === '' || this.loginForm.password === '') {
         alert('Invalid inputs. Try again!')
-      }
-      else {
+      } else {
         let app = this
         this.axios.post('api/user/auth', {
           email: this.loginForm.email,
@@ -93,8 +92,7 @@ export default {
     register () {
       if (this.registerForm.name === '' || this.registerForm.email === '' || this.registerForm.password === '') {
         alert('Invalid inputs. Try again!')
-      }
-      else {
+      } else {
         this.axios.post('api/user/create', {
           name: this.registerForm.name,
           email: this.registerForm.email,
