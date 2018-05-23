@@ -114,5 +114,15 @@ namespace GUI
             this.Close();
             new QuestionPage(t,user).Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            questions.Clear();
+            tickets.Clear();
+            questionsLV.Items.Clear();
+            solverTicketsLV.Items.Clear();
+            GetSolverTickets();
+            GetSolverQuestions();
+        }
     }
 }
