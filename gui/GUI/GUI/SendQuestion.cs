@@ -82,5 +82,6 @@ namespace GUI
             var response = await client.PutAsync("http://localhost:3000/ticket/" + ticket.id, content);
             var responseString = await response.Content.ReadAsStringAsync();
         }
+
     }
 }
