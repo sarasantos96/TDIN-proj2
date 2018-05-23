@@ -29,19 +29,7 @@ namespace GUI
             if (question.response != null)
                 ResponseBox.Text = question.response;
         }
-
-        public async Task DeleteQuestion()
-        {
-            var responseString = await client.DeleteAsync("http://localhost:3000/question/" + question.id);
-            this.Close();
-            new ITHomepage(user).Show();
-        }
-
-            private void button2_Click(object sender, EventArgs e)
-        {
-            DeleteQuestion();
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
